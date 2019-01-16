@@ -4,7 +4,7 @@ let app = express();
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "/upload")
+        cb(null, "./upload")
     },
     filename: (req, file, cb) => {
         var fileFormat = (file.originalname).split(".");
