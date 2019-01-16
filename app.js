@@ -7,10 +7,13 @@
          cb(null, '/uploaded')
      },
      filename: (req, file, cb) => {
-         cb(null, file.filename + '-' + Date.now())
+         cb(null, file.fieldname + '-' + Date.now())
      }
  });
- var upload = multer({storage: storage});
+
+ var upload2 = multer({storage: storage});
+
+ let upload  = multer({ storage: multer.memoryStorage() });
 
  app.post('/api/upload', upload.single('sample'), (req, res) => {
    if (req.file) {
@@ -22,6 +25,18 @@
         console.log('No File Uploaded');
         res.send({ result: 'fail'});
     }
+ });
+
+ app.post('/api/upload2', upload2.single('sample'), (req, res) => {
+     if (req.file) {
+         console.log('Uploading file...');
+         var filename = req.file.filename;
+         console.log('get file ' + filename);
+         res.send({ result: 'success'});
+     } else {
+         console.log('No File Uploaded');
+         res.send({ result: 'fail'});
+     }
  });
 
  app.post('/array', upload.array('sample'), (req, res) => {
