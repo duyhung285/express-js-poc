@@ -1,7 +1,16 @@
  let multer  = require('multer');
  let express = require('express');
  let app     = express();
- let upload  = multer({ storage: multer.memoryStorage() });
+
+ var storage = multer.diskStorage({
+     destination: (req, file, cb) => {
+         cb(null, '/uploaded')
+     },
+     filename: (req, file, cb) => {
+         cb(null, file.fieldname + '-' + Date.now())
+     }
+ });
+ var upload = multer({storage: storage});
 
  app.post('/api/upload', upload.single('sample'), (req, res) => {
    if (req.file) {
