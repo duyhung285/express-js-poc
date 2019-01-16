@@ -46,6 +46,11 @@ app.post('/array', upload.array('sample'), (req, res) => {
     res.send();
 });
 
+app.get('/api/download', function(req, res){
+    var file = __dirname + '/upload/sample-1547610967642.mp4';
+    res.download(file); // Set disposition and send it.
+});
+
 app.get('/', (req, res) => {
     res.send("Server is running at 2019 port");
 });
