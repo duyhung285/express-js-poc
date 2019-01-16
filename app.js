@@ -21,4 +21,8 @@
    res.send();
  });
 
+ app.get('/', (req, res) => {
+     res.send("Server is running at 8080 port");
+ });
+
  app.listen(8080);
