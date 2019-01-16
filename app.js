@@ -18,12 +18,12 @@ let upload = multer({storage: multer.memoryStorage()});
 
 app.post('/api/upload', upload.single('sample'), (req, res) => {
     if (req.file) {
-        console.log('Uploading file...');
+        /*console.log('Uploading file...');
         var filename = req.file.originalname;
-        console.log('get file ' + filename);
+        console.log('get file ' + filename);*/
         res.send({result: 'success'});
     } else {
-        console.log('No File Uploaded');
+        //console.log('No File Uploaded');
         res.send({result: 'fail'});
     }
 });
