@@ -47,7 +47,7 @@ app.post('/array', upload.array('sample'), (req, res) => {
 });
 
 app.get('/api/download', function(req, res){
-    var file = __dirname + '/upload/sample-1547610967642.mp4';
+    var file = __dirname + '/upload/sample.mp4';
     res.download(file); // Set disposition and send it.
 });
 
